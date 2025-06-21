@@ -22,7 +22,7 @@ st.set_page_config(
 # Generation parameters (fixed)
 TEMPERATURE = 0.0  # fully deterministic
 TOP_P = 1.0        # no nucleus sampling restriction
-MAX_TOKENS = 64
+MAX_TOKENS = 128
 
 # Main app
 st.title("Arabic Hate Speech Classification")
