@@ -1,16 +1,11 @@
-import os
 import json
 import streamlit as st
-from dotenv import load_dotenv
 from huggingface_hub import InferenceClient
 
-# Load environment variables from .env file
-load_dotenv()
-
-# Retrieve Hugging Face API token from environment
-HF_TOKEN = os.getenv("HF_TOKEN")
+# Streamlit secrets for Hugging Face Token
+HF_TOKEN = st.secrets.get("HF_TOKEN")
 if not HF_TOKEN:
-    st.error("Please set the HF_TOKEN environment variable (e.g., in a .env file) before running the app.")
+    st.error("Please add your Hugging Face token to Streamlit secrets (st.secrets['HF_TOKEN']).")
     st.stop()
 
 # Initialize the Inference Client
@@ -39,7 +34,7 @@ st.markdown(
 )
 
 # Input textbox
-user_input = st.text_area("Enter your sentence:", "هذا مثال على كلام...", height=150)
+user_input = st.text_area("Enter your sentence:", "Enter a sentence...", height=150)
 
 if st.button("Classify"):
     if not user_input.strip():
